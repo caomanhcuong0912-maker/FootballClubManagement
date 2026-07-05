@@ -13,41 +13,172 @@ public class FootballClubManagement {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        boolean back = false;
-        Scanner scan = new Scanner(System.in);
-        int choice;
-        while (!back){
-            System.out.println("\n----------- MANAGE PLAYERS -----------");
-            System.out.println("1. Add a new player");
-            System.out.println("2. Update player information");
-            System.out.println("3. Deactivate a player");
-            System.out.println("4. View all players");
-            System.out.println("5. Search players");
-            System.out.println("6. Display player details");
-            System.out.println("0. Back to main menu");
-            System.out.print("Choose an option: ");
-            try{
-                choice = scan.nextInt();
-            }catch (InputMismatchException e){
-                System.out.println("Invalid input. Please try again");
-                scan.nextLine();
-                continue;
+    boolean running = true;
+    Scanner scan = new Scanner(System.in);
+    while (running) {
+        System.out.println("\n======================================");
+        System.out.println("  FOOTBALL PLAYER MANAGEMENT SYSTEM  ");
+        System.out.println("======================================");
+        System.out.println("1. Manage Players");
+        System.out.println("2. Training and Match Management");
+        System.out.println("3. Contract and Salary Management");
+        System.out.println("4. Reports");
+        System.out.println("5. Exit");
+        System.out.println("--------------------------------------");
+        System.out.print("Choose an option: ");
+
+        try {
+            int choice = scan.nextInt();
+            scan.nextLine();
+            switch (choice) {
+                case 1 -> showPlayerMenu(scan);
+                case 2 -> showTrainingMenu(scan);
+                case 3 -> showSalaryMenu(scan);
+                case 4 -> showReportMenu(scan);
+                case 5 -> { running = false; showExitMenu(scan); }
+                default -> System.out.println("Invalid option.");
             }
-            switch (choice){
-                case 1 -> System.out.println("You are Gay");
-                case 2 -> System.out.println("You are Gay");
-                case 3 -> System.out.println("You are Gay");
-                case 4 -> System.out.println("You are Gay");
-                case 5 -> System.out.println("You are Gay");
-                case 6 -> System.out.println("You are Gay");
-                case 0 -> back = true;
-                default -> System.out.println("Invalid option. Please choose 0-6.");
-            }
+        } catch (InputMismatchException e) {
+            System.out.println("Please enter a number.");
+            scan.nextLine();
         }
-        
     }
+}
+    static void showPlayerMenu(Scanner scan) {
+    boolean back = false;
+    while (!back) {
+        System.out.println("\n----------- MANAGE PLAYERS -----------");
+        System.out.println("1. Add a new player");
+        System.out.println("2. Update player information");
+        System.out.println("3. Deactivate a player");
+        System.out.println("4. View all players");
+        System.out.println("5. Search players");
+        System.out.println("6. Display player details");
+        System.out.println("0. Back");
+        System.out.print("Choose an option: ");
+        try {
+            int choice = scan.nextInt();
+            scan.nextLine();
+            switch (choice) {
+                case 1 -> System.out.println("[Person 1 pending]");
+                case 2 -> System.out.println("[Person 1 pending]");
+                case 3 -> System.out.println("[Person 1 pending]");
+                case 4 -> System.out.println("[Person 1 pending]");
+                case 5 -> System.out.println("[Person 1 pending]");
+                case 6 -> System.out.println("[Person 1 pending]");
+                case 0 -> back = true;
+                default -> System.out.println("Invalid option.");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Please enter a number.");
+            scan.nextLine();
+        }
+    }
+}
+
+static void showSalaryMenu(Scanner scan) {
+    boolean back = false;
+    while (!back) {
+        System.out.println("\n------- CONTRACT & SALARY MANAGEMENT -------");
+        System.out.println("1. Calculate Player Salary");
+        System.out.println("2. Salary Summary");
+        System.out.println("0. Back");
+        System.out.print("Choose an option: ");
+        try {
+            int choice = scan.nextInt();
+            scan.nextLine();
+            switch (choice) {
+                case 1 -> salaryMgr.calculateSalary();
+                case 2 -> salaryMgr.salarySummary();
+                case 0 -> back = true;
+                default -> System.out.println("Invalid option.");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Please enter a number.");
+            scan.nextLine();
+        }
+    }
+}
+
+static void showReportMenu(Scanner scan) {
+    boolean back = false;
+    while (!back) {
+        System.out.println("\n----------- REPORTS -----------");
+        System.out.println("1. Salary Summary Report");
+        System.out.println("2. All-time Top Goal Scorers");
+        System.out.println("0. Back");
+        System.out.print("Choose an option: ");
+        try {
+            int choice = scan.nextInt();
+            scan.nextLine();
+            switch (choice) {
+                case 1 -> reportMgr.salarySummaryReport();
+                case 2 -> reportMgr.topGoalScorers();
+                case 0 -> back = true;
+                default -> System.out.println("Invalid option.");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Please enter a number.");
+            scan.nextLine();
+        }
+    }
+}
+
+static void showTrainingMenu(Scanner scan) {
+    boolean back = false;
+    while (!back) {
+        System.out.println("\n------- TRAINING & MATCH MANAGEMENT -------");
+        System.out.println("1. Create Training Session");
+        System.out.println("2. Record Attendance");
+        System.out.println("3. Create Match Record");
+        System.out.println("4. Add / Update Performance");
+        System.out.println("5. View Training History");
+        System.out.println("6. View Match History");
+        System.out.println("0. Back");
+        System.out.print("Choose an option: ");
+        try {
+            int choice = scan.nextInt();
+            scan.nextLine();
+            switch (choice) {
+                case 1, 2, 5 -> System.out.println("[Person 2 pending]");
+                case 3, 4, 6 -> System.out.println("[Person 3 pending]");
+                case 0 -> back = true;
+                default -> System.out.println("Invalid option.");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Please enter a number.");
+            scan.nextLine();
+        }
+    }
+}
+
+static void showExitMenu(Scanner scan) {
+    System.out.println("\n----------- EXIT SYSTEM -----------");
+    System.out.println("1. Save and Exit");
+    System.out.println("2. Exit without Saving");
+    System.out.println("3. Cancel");
+    System.out.print("Choose an option: ");
+    try {
+        int choice = scan.nextInt();
+        switch (choice) {
+            case 1 -> {
+                System.out.println("Data saved successfully.");
+                System.out.println("Thank you for using the Football Player Management System.");
+                System.exit(0);
+            }
+            case 2 -> {
+                System.out.println("Thank you for using the Football Player Management System.");
+                System.exit(0);
+            }
+            case 3 -> {} // do nothing, returns to main loop
+        }
+    } catch (InputMismatchException e) {
+        scan.nextLine();
+    }
+}
     
     
 }
+    
+
     
