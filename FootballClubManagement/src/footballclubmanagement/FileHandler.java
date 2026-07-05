@@ -19,7 +19,8 @@ import java.util.List;
 public class FileHandler {
     private static final String PLAYERS_FILE = "players.csv";
     private static final String MATCHES_FILE = "matches.csv";
-    private static final String TRAINING_FILE = "training.csv";
+    private static final String TRAINING_FILE = "training_sessions.csv";
+    private static final String ATTENDANCE_FILE = "attendance_records.csv";
     public void savePlayers(List<Players> players) {
     try {
         File f = new File(PLAYERS_FILE);
