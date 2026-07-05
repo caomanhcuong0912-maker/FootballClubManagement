@@ -29,7 +29,7 @@ public class FileHandler {
 
         for (Players p : players) {
             bw.write(
-                p.getPlayerID() + "," +
+                p.getPlayerId() + "," +
                 p.getFullName() + "," +
                 p.getAge() + "," +
                 p.getNationality() + "," +
