@@ -8,11 +8,13 @@ import java.util.InputMismatchException;
 public class FootballClubManagement {
     static SalaryManager salaryMgr = new SalaryManager();
     static ReportManager reportMgr = new ReportManager(salaryMgr); 
+    static TrainingManager trainingMgr = new TrainingManager();
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+    trainingMgr.loadFromFile();
     boolean running = true;
     Scanner scan = new Scanner(System.in);
     while (running) {
@@ -140,7 +142,9 @@ static void showTrainingMenu(Scanner scan) {
             int choice = scan.nextInt();
             scan.nextLine();
             switch (choice) {
-                case 1, 2, 5 -> System.out.println("[Person 2 pending]");
+                case 1 -> handleCreateTrainingSession(scan);
+                case 2 -> handleRecordAttendance(scan);
+                case 5 -> trainingMgr.viewTrainingHistory();
                 case 3, 4, 6 -> System.out.println("[Person 3 pending]");
                 case 0 -> back = true;
                 default -> System.out.println("Invalid option.");
@@ -162,6 +166,7 @@ static void showExitMenu(Scanner scan) {
         int choice = scan.nextInt();
         switch (choice) {
             case 1 -> {
+                trainingMgr.saveToFile();
                 System.out.println("Data saved successfully.");
                 System.out.println("Thank you for using the Football Player Management System.");
                 System.exit(0);
@@ -176,9 +181,30 @@ static void showExitMenu(Scanner scan) {
         scan.nextLine();
     }
 }
-    
+
+static void handleCreateTrainingSession(Scanner scan) {
+    System.out.print("Training ID: ");
+    String id = scan.nextLine();
+    System.out.print("Date (dd/MM/yyyy): ");
+    String date = scan.nextLine();
+    System.out.print("Location: ");
+    String location = scan.nextLine();
+    System.out.print("Training Topic: ");
+    String topic = scan.nextLine();
+    trainingMgr.createTrainingSession(id, date, location, topic);
+}
+
+static void handleRecordAttendance(Scanner scan) {
+    System.out.print("Training ID: ");
+    String id = scan.nextLine();
+    System.out.print("Absent Player IDs (comma-separated, leave blank if all present): ");
+    String absentIds = scan.nextLine();
+    trainingMgr.recordAttendance(id, absentIds);
+}
     
 }
+
+
     
 
     
