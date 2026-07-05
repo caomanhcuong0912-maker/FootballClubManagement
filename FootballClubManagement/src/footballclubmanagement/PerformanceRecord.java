@@ -1,4 +1,4 @@
-package com.football.management;
+package footballclubmanagement;
 
 public class PerformanceRecord {
     private String playerId;

@@ -1,4 +1,4 @@
-package com.football.management;
+package footballclubmanagement;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
