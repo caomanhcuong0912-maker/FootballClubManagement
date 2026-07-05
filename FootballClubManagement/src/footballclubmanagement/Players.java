@@ -33,7 +33,7 @@ public class Players {
         this.status = status;
     }
 
-    public String getPlayerID()   { return playerID; }
+    public String getPlayerId()   { return playerID; }
     public String getFullName()   { return fullName; }
     public int getAge()           { return age; }
     public String getNationality(){ return nationality; }
